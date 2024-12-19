@@ -1,0 +1,48 @@
+type Query {
+        hello: String
+        getEmployee(employeeType: EmployeeType): [Employee!]!
+        getEmployeeById(id: Int!): Employee
+    }
+        
+enum EmployeeType {
+    FullTime
+    PartTime
+    Contract
+    Seasonal
+}
+
+input UpdateEmployee {
+    title: String
+    department: String
+    currentStatus: String
+}
+
+type Employee {
+    id:Int! ,
+    firstName: String!
+    lastName: String!
+    age: String!
+    doj: String!
+    title: String!
+    department: String!
+    employeeType: EmployeeType!
+    currentStatus: String!
+}
+
+input InputEmployee {
+    id:Int! ,
+    firstName: String!
+    lastName: String!
+    age: String!
+    doj: String!
+    title: String!
+    department: String!
+    employeeType: EmployeeType!
+    currentStatus: String!
+}
+
+type Mutation {
+    addEmployee(employee:InputEmployee!):Employee!
+    deleteEmployee(id:Int!):Employee
+    editEmployee(id: Int!, employee: UpdateEmployee!): Employee
+}
